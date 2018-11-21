@@ -1,12 +1,12 @@
 import React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
-import { Camera, Permissions } from 'expo';
+import { Camera, Permissions, FaceDetector } from 'expo';
 import { Button } from 'react-native-elements';
 
 export default class CameraExample extends React.Component {
     state = {
         hasCameraPermission: null,
-        type: Camera.Constants.Type.back,
+        type: Camera.Constants.Type.front,
     };
 
     async componentDidMount() {
@@ -16,7 +16,12 @@ export default class CameraExample extends React.Component {
     snap = async () => {
         if (this.camera) {
             let photo = await this.camera.takePictureAsync();
-            console.log(photo);
+            const options = { mode: FaceDetector.Constants.Mode.fast }
+            const result = await FaceDetector.detectFacesAsync(photo.uri, options);
+            console.log(result);
+            if (result.faces.length > 0) {
+                
+            }
         }
     }
 
@@ -36,7 +41,8 @@ export default class CameraExample extends React.Component {
                             style={{
                                 flex: 1,
                                 backgroundColor: 'transparent',
-                                // flexDirection: 'row',
+                                justifyContent: 'flex-end',
+                                // alignItems:'center'
                             }}>
                             <Button
                                 onPress={this.snap}

@@ -8,19 +8,24 @@ import Button1 from './src/components/Button/Button.js';
 export default class App extends React.Component {
 
   state = {
-    camera: false
+    camera: false,
+    quiz: true
   }
 
 
   render() {
-    const { camera } = this.state;
+    const { camera, quiz } = this.state;
     return (
       <View style={styles.container} >
         <View style={styles.header}>
           <Header name="Quiz App" />
         </View>
         <View style={styles.button} >
-          {
+          {quiz ? <View>
+            <Text>
+              Quiz Text
+            </Text>
+          </View> :
             camera ? <Camera /> :
               <Button1
                 onPress={() => { this.setState({ camera: true }) }}
