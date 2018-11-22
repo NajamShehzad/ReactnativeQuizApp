@@ -4,6 +4,7 @@ import { Button, Card } from 'react-native-elements';
 import Header from './src/components/Header/Header';
 import Camera from './src/components/Camera/Camera';
 import Button1 from './src/components/Button/Button.js';
+import Quiz from './src/components/Quiz/Quiz';
 
 export default class App extends React.Component {
 
@@ -21,11 +22,7 @@ export default class App extends React.Component {
           <Header name="Quiz App" />
         </View>
         <View style={styles.button} >
-          {quiz ? <View>
-            <Text>
-              Quiz Text
-            </Text>
-          </View> :
+          {quiz ? <Quiz /> :
             camera ? <Camera /> :
               <Button1
                 onPress={() => { this.setState({ camera: true }) }}
@@ -40,7 +37,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 10
   },
   header: {
     flex: 1,
