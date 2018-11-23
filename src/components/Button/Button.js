@@ -13,7 +13,7 @@ const CameraButton = (props) => {
                 icon={{ name: 'expand-less', size: 32 }}
                 buttonStyle={{ backgroundColor: '#00bfff' }}
                 textStyle={{ textAlign: 'center' }}
-                title={`Get Started`}
+                title={props.name || `Get Started`}
             />
         </View>
     )

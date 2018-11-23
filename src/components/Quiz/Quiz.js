@@ -1,48 +1,42 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
-import { Button, CheckBox } from 'react-native-elements';
+import Data from './QuizData';
+import Quiz from './QuizList';
+import Button from '../Button/Button';
 
 
-class Quiz extends React.Component {
+
+class QuizScreen extends React.Component {
 
 
     constructor(props) {
         super(props);
         this.state = {
-            checked: false
+            checked: false,
+            index: 0,
+
         }
     }
 
     render() {
-        const { checked } = this.state;
+        const { index } = this.state;
+        console.log(this.state.value);
+        console.log(Data);
+
         return (
-            <View  >
-                <CheckBox
-                    component={TouchableWithoutFeedback}
-                    onPress={() => this.setState({ checked: !checked })}
-                    title='This Is A Message'
-                    checkedIcon='dot-circle-o'
-                    uncheckedIcon='circle-o'
-                    checked={checked}
-                />
-                <CheckBox
-                    component={TouchableWithoutFeedback}
-                    onPress={() => this.setState({ checked: !checked })}
-                    title='This Is A Message'
-                    checkedIcon='dot-circle-o'
-                    uncheckedIcon='circle-o'
-                    checked={checked}
-                />
-                <CheckBox
-                    component={TouchableWithoutFeedback}
-                    onPress={() => this.setState({ checked: !checked })}
-                    title='This Is A Message'
-                    checkedIcon='dot-circle-o'
-                    uncheckedIcon='circle-o'
-                    checked={checked}
-                />
+            <View  style={{flex:1}} >
+                <View style={{flex:1}}>
+                    <Quiz data={Data[index]} />
+                </View>
+                <View style={{flex:1}}>
+                    <Button
+                        name={'Next'}
+                        onPress={() => console.log('Working')}
+                    />
+
+                </View>
             </View>
         )
     }
 }
-export default Quiz;
+export default QuizScreen;

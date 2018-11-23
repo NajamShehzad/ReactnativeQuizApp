@@ -21,7 +21,7 @@ export default class App extends React.Component {
         <View style={styles.header}>
           <Header name="Quiz App" />
         </View>
-        <View style={styles.button} >
+        <View style={quiz ? styles.quiz : styles.button} >
           {quiz ? <Quiz /> :
             camera ? <Camera /> :
               <Button1
@@ -47,5 +47,11 @@ const styles = StyleSheet.create({
     height: 80,
     justifyContent: 'center',
     // alignItems:'center'
+  }
+  ,
+  quiz:{
+    flex:10,
+    height:500,
+    justifyContent:'center',
   }
 });
