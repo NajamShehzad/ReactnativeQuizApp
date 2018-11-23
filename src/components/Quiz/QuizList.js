@@ -19,10 +19,13 @@ class QuizList extends React.Component {
             ]
         }
     }
+    componentWillReceiveProps(nextPorps,prviousProps){
+        console.log("Next ===> ?",nextPorps.data);
+        
+    }
 
     render() {
         const { checked, radio_props, question } = this.state;
-        console.log(this.state.value);
 
         return (
             <View style={{flex:1,fontSize:30,marginLeft:10}} >

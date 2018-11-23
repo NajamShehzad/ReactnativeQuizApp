@@ -20,7 +20,9 @@ export default class CameraExample extends React.Component {
             const result = await FaceDetector.detectFacesAsync(photo.uri, options);
             console.log(result);
             if (result.faces.length > 0) {
+                console.log("Match found");
                 
+                this.props.startQuiz();
             }
         }
     }

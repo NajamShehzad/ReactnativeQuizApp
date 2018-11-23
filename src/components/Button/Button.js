@@ -10,7 +10,7 @@ const CameraButton = (props) => {
                 borderRadius={10}
                 onPress={props.onPress}
                 raised
-                icon={{ name: 'expand-less', size: 32 }}
+                icon={{ name: props.icon || 'expand-less', size: 32 }}
                 buttonStyle={{ backgroundColor: '#00bfff' }}
                 textStyle={{ textAlign: 'center' }}
                 title={props.name || `Get Started`}
