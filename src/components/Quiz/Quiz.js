@@ -16,27 +16,31 @@ class QuizScreen extends React.Component {
             checked: false,
             index: 0,
             value: 0,
-            marks: 0
+            marks: 0,
+            selectedValue: 0
         }
     }
     saveData() {
-        let { index, value, marks } = this.state;
+        let { index, value, marks, selectedValue } = this.state;
         console.log(marks);
         if (Data.length == index + 1) {
             console.log("Length Completed");
-            if (value == Data[index].correct) {
+            if (selectedValue == Data[index].correct) {
                 marks += 10;
-                this.props.result({marks,length:Data.length})
+                this.props.result({ marks, length: Data.length })
+            }
+            else {
+                this.props.result({ marks, length: Data.length })
             }
 
         }
         else if (Data.length > index + 1) {
-            if (value == Data[index].correct) {
+            if (selectedValue == Data[index].correct) {
                 marks += 10;
                 this.setState({ index: index + 1, marks, value: 0 })
             }
-            else{
-                this.setState({ index: index + 1,value: 0 })
+            else {
+                this.setState({ index: index + 1, value: 0 })
             }
         }
     }
@@ -64,13 +68,13 @@ class QuizScreen extends React.Component {
                                 radio_props={radio_props}
                                 initial={value}
                                 buttonSize={15}
-                                labelStyle={{fontSize: 15, color: '#2ecc71'}}
-                                onPress={(value) => { this.setState({ value: value }) }}
+                                labelStyle={{ fontSize: 15, color: '#2ecc71' }}
+                                onPress={(value) => { this.setState({ selectedValue: value }) }}
                             />
                         </View>
                     </View>
                 </View>
-                <View style={{ flex: 1 ,justifyContent:"flex-end",marginBottom:"20%"}}>
+                <View style={{ flex: 1, justifyContent: "flex-end", marginBottom: "20%" }}>
                     <Button
                         name={'Next'}
                         onPress={() => this.saveData()}
