@@ -12,7 +12,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       camera: false,
-      quiz: true,
+      quiz: false,
       marks: 0,
       result: false,
       finalResult: null
@@ -38,13 +38,18 @@ export default class App extends React.Component {
           <Header name="Quiz App" />
         </View>
         <View style={quiz ? styles.quiz : styles.button} >
-          {result ? <View>
-            <Text>
+          {result ? <View style={{ flex: 1, justifyContent: 'center' }} >
+            <Text style={{ fontSize: 30 }}>
               Result Screen : {this.state.finalResult.marks}
             </Text>
-            <Text>
+            <Text style={{ fontSize: 30 }}>
               Out of : {this.state.finalResult.length * 10}
             </Text>
+            <Button1
+              name="Restart Quiz"
+              icon="replay"
+              onPress={()=> this.setState({quiz:false,result:false})}
+            />
           </View> : quiz ? <Quiz result={this.result} /> :
               camera ? <Camera startQuiz={() => this.startQuiz()} /> :
                 <Button1

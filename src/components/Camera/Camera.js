@@ -49,6 +49,7 @@ export default class CameraExample extends React.Component {
                             <Button
                                 onPress={this.snap}
                                 raised
+                                borderRadius={10}
                                 icon={{ name: 'expand-less', size: 32 }}
                                 buttonStyle={{ backgroundColor: '#00bfff', borderRadius: 10 }}
                                 textStyle={{ textAlign: 'center' }}
